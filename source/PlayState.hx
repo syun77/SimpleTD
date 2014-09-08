@@ -8,8 +8,8 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 
 /**
- * A FlxState which can be used for the actual gameplay.
- */
+ * メインゲーム
+ **/
 class PlayState extends FlxState
 {
 	/**
