@@ -24,7 +24,7 @@ class Reg {
      **/
     public static var enemyImage(get, null):BitmapData;
     private static function get_enemyImage():BitmapData {
-        var enemy:BitmapData = new BitmapData(6, 6, false, FlxColor.BLACK);
+        var enemy:BitmapData = new BitmapData(6, 6, false, FlxColor.GREEN);
         var eye:BitmapData = new BitmapData(1, 2, false, FlxColor.WHITE);
         enemy.draw(eye, new Matrix(1, 0, 0, 1, 1, 1));
         enemy.draw(eye, new Matrix(1, 0, 0, 1, 4, 1));
