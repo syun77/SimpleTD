@@ -5,6 +5,8 @@ import flixel.util.FlxColor;
 import flash.display.BitmapData;
 class Reg {
 
+    public static var PS:PlayState = null;
+
     // グリッドのサイズ
     public static inline var GRID_SIZE:Int = 8;
 

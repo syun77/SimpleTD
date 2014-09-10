@@ -24,6 +24,7 @@ class PlayState extends FlxState {
      **/
     override public function create():Void {
         super.create();
+        Reg.PS = this;
 
         // マップ読み込み。0が通過可能
         var csvMap = Assets.getText("assets/data/map.csv");
@@ -42,6 +43,7 @@ class PlayState extends FlxState {
      **/
     override public function destroy():Void {
         super.destroy();
+        Reg.PS = null;
     }
 
     /**
