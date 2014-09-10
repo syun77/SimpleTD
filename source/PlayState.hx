@@ -1,5 +1,7 @@
 package;
 
+import flixel.util.FlxColor;
+import flixel.text.FlxText;
 import flixel.util.FlxPoint;
 import flixel.FlxG;
 import flixel.tile.FlxTilemap;
@@ -16,8 +18,15 @@ class PlayState extends FlxState {
     private static inline var END_X:Int = GRID_SIZE * 17 + 2;
     private static inline var END_Y:Int = GRID_SIZE * 14;
 
+    // ゲームオブジェクト
     private var _map:FlxTilemap;
     private var _enemy:Enemy;
+
+    // テキスト
+    private var _txtMoney:FlxText;
+
+    // 変数
+    private var _money:Int = 0; // 所持金
 
     /**
      * 生成
@@ -35,7 +44,23 @@ class PlayState extends FlxState {
         this.add(_enemy);
         _enemyFollowPath();
 
+        // テキスト
+        _txtMoney = new FlxText(FlxG.width-128, 8, 128);
+        _txtMoney.alignment = "right";
+//        _txtMoney.color = FlxColor.WHITE;
+        this.add(_txtMoney);
+
+        // 変数初期化
+        _money = 0;
+
+        addMoney(0);
+
         FlxG.debugger.toggleKeys = ["ALT"];
+    }
+
+    public function addMoney(v:Int):Void {
+        _money += v;
+        _txtMoney.text = "MONEY: " + _money;
     }
 
     /**
@@ -68,8 +93,6 @@ class PlayState extends FlxState {
     private function _enemyFollowPath():Void {
         var start = FlxPoint.get(START_X, START_Y);
         var end = FlxPoint.get(END_X, END_Y);
-        trace(start);
-        trace(end);
         var pList:Array<FlxPoint> = _map.findPath(start, end);
         _enemy.followPath(pList);
     }
